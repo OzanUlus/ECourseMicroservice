@@ -1,4 +1,6 @@
-﻿namespace ECourseMicroservice.Catolog.Api.Options
+﻿using Microsoft.Extensions.Options;
+
+namespace ECourseMicroservice.Catolog.Api.Options
 {
     public static class OptionExt
     {
@@ -8,6 +10,9 @@
                     .BindConfiguration(nameof(MongoOption))
                     .ValidateDataAnnotations()
                     .ValidateOnStart();
+
+
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoOption>>().Value);
 
             return services;
         }
