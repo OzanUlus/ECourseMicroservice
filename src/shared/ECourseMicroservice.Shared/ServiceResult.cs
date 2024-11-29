@@ -126,10 +126,11 @@ namespace ECourseMicroservice.Shared
     public class ServiceResult<T> : ServiceResult 
     {
         public T? Data { get; set; }
+        [JsonIgnore]
         public string? UrlAsCreated { get; set; }
 
         //200
-        public static ServiceResult SuccessAsOk(T data)
+        public static ServiceResult<T> SuccessAsOk(T data)
         {
             return new ServiceResult<T>
             {
@@ -140,7 +141,7 @@ namespace ECourseMicroservice.Shared
 
         //201 => Created => response body header => location = api/products/5
 
-        public static ServiceResult SuccessAsCtreated(T data, string url)
+        public static ServiceResult<T> SuccessAsCreated(T data, string url)
         {
             return new ServiceResult<T>
             {
