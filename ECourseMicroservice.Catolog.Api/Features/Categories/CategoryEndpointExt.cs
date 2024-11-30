@@ -1,5 +1,5 @@
 ﻿using ECourseMicroservice.Catolog.Api.Features.Categories.Create;
-using ECourseMicroservice.Shared.Filters;
+using ECourseMicroservice.Catolog.Api.Features.Categories.GetAll;
 
 namespace ECourseMicroservice.Catolog.Api.Features.Categories
 {
@@ -7,7 +7,10 @@ namespace ECourseMicroservice.Catolog.Api.Features.Categories
     {
         public static void AddCategoryGroupEndpointExt(this WebApplication app) 
         {
-            app.MapGroup("api/categories").CreateCategoryGroupItemEndpoint();
+            app.MapGroup("api/categories")
+                .CreateCategoryGroupItemEndpoint()
+                .GetAllCategoryGroupItemEndpoint();
+           
         }
     }
 }
