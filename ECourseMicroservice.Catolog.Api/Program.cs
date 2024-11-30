@@ -1,10 +1,8 @@
+using ECourseMicroservice.Catolog.Api;
 using ECourseMicroservice.Catolog.Api.Features.Categories;
-using ECourseMicroservice.Catolog.Api.Features.Categories.Create;
 using ECourseMicroservice.Catolog.Api.Options;
 using ECourseMicroservice.Catolog.Api.Repositories;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
+using ECourseMicroservice.Shared.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddOptiosExt();
 builder.Services.AddDatabaseServiceExt();
+builder.Services.AddCommonServiceExt(typeof(CatologAssembly));
 
 
 

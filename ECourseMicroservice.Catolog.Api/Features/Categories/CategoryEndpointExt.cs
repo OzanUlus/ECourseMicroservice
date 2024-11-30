@@ -1,4 +1,5 @@
 ﻿using ECourseMicroservice.Catolog.Api.Features.Categories.Create;
+using ECourseMicroservice.Shared.Filters;
 
 namespace ECourseMicroservice.Catolog.Api.Features.Categories
 {

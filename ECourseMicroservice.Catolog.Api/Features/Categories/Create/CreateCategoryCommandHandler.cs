@@ -25,7 +25,7 @@ namespace ECourseMicroservice.Catolog.Api.Features.Categories.Create
             await context.AddAsync(category, cancellationToken);
             await context.SaveChangesAsync(cancellationToken);
 
-            return ServiceResult<CreateCategoryResponse>.SuccessAsCreated(new CreateCategoryResponse(category.Id), "");
+            return ServiceResult<CreateCategoryResponse>.SuccessAsCreated(new CreateCategoryResponse(category.Id), "<empty>");
         }
     }
 }

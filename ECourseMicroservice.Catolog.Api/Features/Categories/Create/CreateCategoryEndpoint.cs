@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using ECourseMicroservice.Shared.Extensions;
+using ECourseMicroservice.Shared.Filters;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECourseMicroservice.Catolog.Api.Features.Categories.Create
@@ -7,16 +9,9 @@ namespace ECourseMicroservice.Catolog.Api.Features.Categories.Create
     {
         public static RouteGroupBuilder CreateCategoryGroupItemEndpoint(this RouteGroupBuilder group ) 
         {
-            group.MapPost("/", async (CreateCategoryCommand command, IMediator mediator) =>
-            {
-                var result = await mediator.Send(command);
-
-                return new ObjectResult(result)
-                {
-                    StatusCode = result.Status.GetHashCode(),
-                };
-
-            });
+            group.MapPost("/", async (CreateCategoryCommand command, IMediator mediator) => (await mediator.Send(command)).ToGenericResult())
+                 .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
+            
             return group;
         }
     }
